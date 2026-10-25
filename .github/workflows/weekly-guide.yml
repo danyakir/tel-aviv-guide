@@ -1,0 +1,79 @@
+name: Weekly Tel Aviv guide
+
+on:
+  schedule:
+    - cron: '0 20 * * 3'
+      timezone: Asia/Jerusalem
+  workflow_dispatch:
+    inputs:
+      send_email:
+        description: Send the generated guide by email
+        type: boolean
+        default: false
+
+permissions:
+  contents: read
+
+concurrency:
+  group: weekly-guide
+  cancel-in-progress: false
+
+jobs:
+  guide:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    env:
+      TZ: Asia/Jerusalem
+      PYTHONIOENCODING: utf-8
+      SMTP_HOST: ${{ secrets.SMTP_HOST }}
+      SMTP_PORT: ${{ secrets.SMTP_PORT }}
+      SMTP_USER: ${{ secrets.SMTP_USER }}
+      SMTP_PASS: ${{ secrets.SMTP_PASS }}
+      EMAIL_FROM: ${{ secrets.EMAIL_FROM }}
+      EMAIL_TO: ${{ secrets.EMAIL_TO }}
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+          cache: pip
+      - name: Install dependencies
+        run: python -m pip install -r requirements.txt
+      - name: Run tests
+        run: python -m unittest discover -t . -s tests
+      - name: Generate fresh weekend guide
+        run: python preview_guide.py
+      - name: Send email
+        if: github.event_name == 'schedule' || inputs.send_email
+        run: python send_preview.py
+      - name: Save guide for review
+        uses: actions/upload-artifact@v4
+        with:
+          name: weekend-guide-${{ github.run_number }}
+          path: |
+            guide-preview.html
+            guide-preview.txt
+            guide-preview.json
+          retention-days: 14
+
+  record-delivery:
+    needs: guide
+    if: github.event_name == 'schedule' || inputs.send_email
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: actions/download-artifact@v4
+        with:
+          name: weekend-guide-${{ github.run_number }}
+          path: guide-output
+      - name: Record successful delivery without personal data
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: python .github/scripts/record_delivery.py

@@ -1,0 +1,6 @@
+# Copy to .dev.vars for local testing only. Never commit the real file.
+WHATSAPP_TOKEN="EAAG...your temporary or permanent token"
+PHONE_NUMBER_ID="123456789012345"
+VERIFY_TOKEN="any-random-string-you-choose"
+APP_SECRET="your-meta-app-secret"
+LLM_API_KEY="gsk_... your Groq / Gemini / OpenRouter key"

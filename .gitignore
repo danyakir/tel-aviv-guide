@@ -1,0 +1,28 @@
+# secrets
+.env
+*.env
+!.env.example
+.dev.vars
+.dev.vars.*
+!.dev.vars.example
+*.pem
+*.key
+
+# python
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+.pytest_cache/
+
+# runtime
+logs/
+*.log
+guide-preview.html
+guide-preview.txt
+guide-preview.json
+node_modules/
+.wrangler/
+
+# mac
+.DS_Store

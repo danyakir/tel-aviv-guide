@@ -1,0 +1,33 @@
+name = "whatsapp-agent"
+main = "src/index.js"
+compatibility_date = "2026-01-01"
+
+# Conversation history + webhook dedupe.
+# Create it once with: npx wrangler kv namespace create AGENT_KV
+# then paste the printed id here.
+[[kv_namespaces]]
+binding = "KV"
+id = "REPLACE_WITH_KV_NAMESPACE_ID"
+
+[vars]
+GRAPH_VERSION = "v23.0"
+LLM_BASE_URL = "https://api.groq.com/openai/v1"
+LLM_MODEL = "llama-3.3-70b-versatile"
+HISTORY_TURNS = "12"
+LLM_MAX_TOKENS = "500"
+# Optional comma separated allowlist, e.g. "972501234567,972521234567"
+ALLOWED_NUMBERS = ""
+SYSTEM_PROMPT = """
+You are the WhatsApp assistant for a Tel Aviv city guide.
+Be warm, brief and concrete: 2-4 short sentences or a tight bullet list.
+Answer in the language the user writes in (Hebrew or English).
+Recommend real neighbourhoods, streets and venues in Tel Aviv, and say so plainly when you are unsure about opening hours or prices.
+Never invent an address. If you need a detail to answer well, ask one short follow-up question.
+"""
+
+# Secrets are NOT set here. Use:
+#   npx wrangler secret put WHATSAPP_TOKEN
+#   npx wrangler secret put PHONE_NUMBER_ID
+#   npx wrangler secret put VERIFY_TOKEN
+#   npx wrangler secret put APP_SECRET
+#   npx wrangler secret put LLM_API_KEY
