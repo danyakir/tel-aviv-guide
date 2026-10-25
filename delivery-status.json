@@ -1,0 +1,24 @@
+{
+  "weekend_start": "2026-10-29",
+  "weekend_end": "2026-10-31",
+  "events": 30,
+  "categories": {
+    "party": 20,
+    "show": 7,
+    "daytime": 3
+  },
+  "sources": [
+    "Airdrop",
+    "Bonire",
+    "Gagarin",
+    "HappyTLV",
+    "Levontin 7",
+    "Secret Tel Aviv Live Music",
+    "Secret Tel Aviv Parties",
+    "Teder",
+    "Tel Aviv Municipality"
+  ],
+  "friday_evening_parties": 11,
+  "sent_at_utc": "2026-10-25T20:48:22.125270+00:00",
+  "workflow_run": "https://github.com/danyakir/tel-aviv-guide/actions/runs/40232386730"
+}
