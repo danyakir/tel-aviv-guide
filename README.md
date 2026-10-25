@@ -2,6 +2,10 @@
 
 A proactive agent that researches Tel Aviv weekend events and sends you an HTML email guide every **Wednesday at 20:00 Israel time (Asia/Jerusalem)**.
 
+## Hosted weekly delivery
+
+The [Weekly Tel Aviv guide workflow](https://github.com/danyakir/tel-aviv-guide/actions/workflows/weekly-guide.yml) runs on GitHub's hosted servers, so your computer can be off. Email credentials are encrypted Actions secrets. See [DEPLOYMENT.md](DEPLOYMENT.md) for configuration, manual test runs, and delivery status.
+
 ## What you get
 
 Standing requirements for every weekly search are in [SOURCING_RULES.md](SOURCING_RULES.md): independent website variety, direct event links, visible prices (or an explicit unavailable label), and separate event cards. Runtime selection balances domains and the report discloses coverage below three websites.
