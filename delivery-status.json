@@ -1,11 +1,11 @@
 {
-  "weekend_start": "2026-10-29",
-  "weekend_end": "2026-10-31",
+  "weekend_start": "2026-11-05",
+  "weekend_end": "2026-11-07",
   "events": 30,
   "categories": {
-    "show": 7,
     "party": 20,
-    "daytime": 3
+    "daytime": 2,
+    "show": 8
   },
   "sources": [
     "Airdrop",
@@ -14,11 +14,9 @@
     "Levontin 7",
     "Secret Tel Aviv",
     "Secret Tel Aviv Live Music",
-    "Secret Tel Aviv Parties",
-    "Teder",
     "Tel Aviv Municipality"
   ],
-  "friday_evening_parties": 10,
-  "sent_at_utc": "2026-10-28T22:25:04.561985+00:00",
-  "workflow_run": "https://github.com/danyakir/tel-aviv-guide/actions/runs/40779677719"
+  "friday_evening_parties": 7,
+  "sent_at_utc": "2026-11-04T23:28:08.594652+00:00",
+  "workflow_run": "https://github.com/danyakir/tel-aviv-guide/actions/runs/41933799833"
 }
