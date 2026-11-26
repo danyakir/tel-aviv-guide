@@ -1,11 +1,11 @@
 {
-  "weekend_start": "2026-11-19",
-  "weekend_end": "2026-11-21",
+  "weekend_start": "2026-11-26",
+  "weekend_end": "2026-11-28",
   "events": 30,
   "categories": {
     "daytime": 3,
-    "show": 7,
-    "party": 20
+    "party": 20,
+    "show": 7
   },
   "sources": [
     "Airdrop",
@@ -14,11 +14,9 @@
     "Levontin 7",
     "Secret Tel Aviv",
     "Secret Tel Aviv Live Music",
-    "Secret Tel Aviv Parties",
-    "Tel Aviv Municipality",
-    "Zygo (Hebrew)"
+    "Tel Aviv Municipality"
   ],
-  "friday_evening_parties": 10,
-  "sent_at_utc": "2026-11-19T00:06:27.276228+00:00",
-  "workflow_run": "https://github.com/danyakir/tel-aviv-guide/actions/runs/44426142251"
+  "friday_evening_parties": 14,
+  "sent_at_utc": "2026-11-26T01:43:11.444416+00:00",
+  "workflow_run": "https://github.com/danyakir/tel-aviv-guide/actions/runs/45737537775"
 }
